@@ -430,6 +430,47 @@ function M.setup(config)
 
     -- lazyvim
     LazyNormal = { bg = c.background_dark },
+
+    -- Grupos base para Lualine
+    StatusLine = { fg = c.green0, bg = c.dark_green },
+    StatusLineNC = { fg = c.comment, bg = c.background_dark },
+
+    -- Componentes específicos
+    LualineModeNormal = { fg = c.dark, bg = c.green0, style = "bold" },
+    LualineModeInsert = { fg = c.dark, bg = c.green05 },
+    LualineModeVisual = { fg = c.dark, bg = c.green1 },
+    LualineModeReplace = { fg = c.dark, bg = c.error },
+    LualineModeCommand = { fg = c.dark, bg = c.gray2 },
+
+  }
+
+  theme.lualine = {
+    normal = {
+      a = { fg = c.dark, bg = c.green0, gui = "bold" },
+      b = { fg = c.green0, bg = c.dark_green },
+      c = { fg = c.green0, bg = c.background_dark }
+    },
+    insert = {
+      a = { fg = c.dark, bg = c.green05, gui = "bold" },
+      b = { fg = c.green05, bg = c.dark_green }
+    },
+    visual = {
+      a = { fg = c.dark, bg = c.green1, gui = "bold" },
+      b = { fg = c.green1, bg = c.dark_green }
+    },
+    replace = {
+      a = { fg = c.dark, bg = c.error, gui = "bold" },
+      b = { fg = c.error, bg = c.dark_green }
+    },
+    command = {
+      a = { fg = c.dark, bg = c.gray2, gui = "bold" },
+      b = { fg = c.gray2, bg = c.dark_green }
+    },
+    inactive = {
+      a = { fg = c.comment, bg = c.background_dark },
+      b = { fg = c.comment, bg = c.background_dark },
+      c = { fg = c.comment, bg = c.background_dark }
+    }
   }
 
   if config.telescope_theme then
