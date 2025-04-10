@@ -1,7 +1,10 @@
-lua package.loaded['the_matrix_reloaded.colors'] = nil
-lua package.loaded['the_matrix_reloaded.config'] = nil
-lua package.loaded['the_matrix_reloaded.theme'] = nil
-lua package.loaded['the_matrix_reloaded.util'] = nil
-lua package.loaded['the_matrix_reloaded'] = nil
+lua << EOF
+package.loaded['the_matrix_reloaded'] = nil
+package.loaded['the_matrix_reloaded.colors'] = nil
+package.loaded['the_matrix_reloaded.config'] = nil
+package.loaded['the_matrix_reloaded.theme'] = nil
+package.loaded['the_matrix_reloaded.util'] = nil
+package.loaded['the_matrix_reloaded.lualine'] = nil
 
-lua require('the_matrix_reloaded').colorscheme()
+require('the_matrix_reloaded').colorscheme()
+EOF
