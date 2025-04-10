@@ -1,64 +1,132 @@
+# 🌀 The Matrix Reloaded Theme
+
 ![banner](images/banner_img.png)
 
-# 🎄 The Matrix Theme
+The Matrix Reloaded theme is inspired by the [the-matrix.nvim](https://github.com/luisiacc/the-matrix.nvim) theme. Reloaded version with enhanced features and integrations.
 
-The Matrix Theme with full support for treesitter!
+## ✨ Features
 
-## 🤔 Why?
+### Core Features
+- Full support for **TreeSitter** syntax highlighting with language-specific optimizations
+- Integrated **Lualine** theme with Matrix-style indicators and custom separators
+- Optimized for modern Neovim plugins and LSP ecosystem
+- Multiple background variants (medium/dark)
+- Transparent mode support
+- Customizable styles for syntax elements
+- Comprehensive diff highlighting
+- Enhanced terminal integration
+- Support for multiple file types including:
+  - HTML/CSS
+  - Markdown
+  - PHP
+  - Python
+  - JavaScript
+  - Rust
+  - And more...
 
-Because it's The Matrix!
+### Plugin Support
+- **LSP & Diagnostics**
+  - coc.nvim
+  - lspsaga.nvim
+  - trouble.nvim
+  - nvim-cmp
+- **Git Integration**
+  - gitsigns.nvim
+  - neogit
+  - git-messenger.vim
+- **Navigation & Search**
+  - telescope.nvim
+  - nvim-tree.lua
+  - hop.nvim
+  - lightspeed.nvim
+  - vim-sneak
+- **UI Components**
+  - lualine.nvim
+  - bufferline.nvim
+  - dashboard.nvim
+  - which-key.nvim
+  - indent-blankline.nvim
+- **Startup & Utilities**
+  - vim-startify
+  - EasyMotion
+  - CocExplorer
 
-## ⚙️ Installation
+## 🚀 Installation
 
+### Using [Lazy.nvim](https://github.com/folke/lazy.nvim)
+```lua
+{
+  "salvarsa/salvarsa-the-matrix-reloaded.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.cmd([[colorscheme the_matrix_reloaded]])
+  end
+}
+```
+
+### Using Vim-Plug
 ```vim
-Plug 'luisiacc/the_matrix_reloaded'
-...
+Plug 'salvarsa/salvarsa-the-matrix-reloaded.nvim'
 colorscheme the_matrix_reloaded
 ```
 
-## 🪛 Configuration
+## ⚙️ Configuration
 
-> ❗️ configuration needs to be set **BEFORE** loading the color scheme with `colorscheme the_matrix_reloaded`
+> ❗️ Configuration must be set **BEFORE** loading the color scheme
 
-| Option               | Default     | Available options                                |
-| -------------------- | ----------- | ------------------------------------------------ |
-| background_color     | `medium`    | `medium`, `dark`                                 |
-| transparent_mode     | `false`     | `false`, `true` - sets background colors to None |
-| comment_style        | `italic`    | see `:h attr-list`                               |
-| keyword_style        | `italic`    | see `:h attr-list`                               |
-| string_style         | `nocombine` | see `:h attr-list`                               |
-| function_style       | `bold`      | see `:h attr-list`                               |
-| variable_style       | `NONE`      | see `:h attr-list`                               |
-| highlights           | `{}`        | override highlights with your custom highlights  |
-| color_overrides      | `{}`        | override color palette with your custom colors   |
+### Basic Options
+| Option               | Default     | Description                                   |
+|----------------------|-------------|-----------------------------------------------|
+| `background_color`   | `medium`    | Background variant: `medium` or `dark`        |
+| `transparent_mode`   | `false`     | Enable transparent background                 |
+| `comment_style`      | `italic`    | Style for comments (see `:h attr-list`)       |
+| `keyword_style`      | `italic`    | Style for keywords                            |
+| `string_style`       | `nocombine` | Style for string literals                     |
+| `function_style`     | `bold`      | Style for function declarations               |
+| `variable_style`     | `NONE`      | Style for variables                           |
+| `highlights`         | `{}`        | Custom highlight overrides                    |
+| `color_overrides`    | `{}`        | Custom color palette modifications            |
 
+### Basic Setup
 ```lua
--- Example config in Lua
-vim.g.the_matrix_reloaded_function_style = "NONE"
-vim.g.the_matrix_reloaded_keyword_style = "italic"
-
--- Each highlight group must follow the structure:
--- ColorGroup = {fg = "foreground color", bg = "background_color", style = "some_style(:h attr-list)"}
--- See also :h highlight-guifg
--- Example:
-vim.g.the_matrix_reloaded_highlights = {Normal = {fg = "#123123", bg = "NONE", style="underline"}}
-
--- Enable telescope theme
-vim.g.the_matrix_reloaded_telescope_theme = 1
-
--- Enable transparent mode
-vim.g.the_matrix_reloaded_transparent_mode = 1
-
--- Load the colorscheme
-vim.cmd[[colorscheme the_matrix_reloaded]]
+-- Lua configuration example
+vim.g.the_matrix_reloaded = {
+  transparent_mode = true,
+  telescope_theme = true,
+  function_style = "NONE",
+  keyword_style = "italic",
+  color_overrides = {
+    green0 = "#00ff00",
+    background = "#0a0a0a"
+  }
+}
+vim.cmd([[colorscheme the_matrix_reloaded]])
 ```
 
-If you enable the telescope theme, I recommend using it with this borderchars config:
+```vim
+" VimScript configuration example
+let g:the_matrix_reloaded_transparent_mode = 1
+let g:the_matrix_reloaded_telescope_theme = 1
+colorscheme the_matrix_reloaded
+```
 
+### Advanced Customization
 ```lua
-telescope.setup({
+-- Custom highlights using color palette
+local colors = require("the_matrix_reloaded.colors").config()
+vim.g.the_matrix_reloaded_highlights = {
+  Normal = { fg = colors.green05, bg = colors.dark },
+  LualineModeNormal = { fg = colors.dark, bg = colors.green0, style = "bold" }
+}
+```
+
+## 🖥️ Terminal Integration
+
+### Recommended Telescope Configuration
+```lua
+require('telescope').setup({
   defaults = {
-    ...
     borderchars = {
       prompt = { "─", " ", " ", " ", "─", "─", " ", " " },
       results = { " " },
@@ -68,45 +136,23 @@ telescope.setup({
 })
 ```
 
-```vim
-" Example config in VimScript
-let g:the_matrix_reloaded_function_style = "NONE"
-let g:the_matrix_reloaded_keyword_style = "italic"
+### Lualine Configuration
+The theme includes a custom Lualine configuration with:
+- Matrix-style indicators
+- Custom separators
+- File path display
+- Git integration
+- Diagnostics
+- Encoding and file type information
 
-" Enable telescope theme
-let g:the_matrix_reloaded_telescope_theme = 1
+## 🎨 Color Palette
 
-" Enable transparent mode
-let g:the_matrix_reloaded_transparent_mode = 1
+The theme features a carefully crafted color palette with:
+- Multiple shades of green for the Matrix aesthetic
+- Contrasting foreground and background colors
+- Special colors for syntax highlighting
+- Customizable color overrides
 
-" Load the colorscheme
-colorscheme the_matrix_reloaded
-```
+## 📜 License
+MIT © [salvarsa](LICENSE)
 
-If you want access to the palette you have to do this:
-
-```lua
-local colors = require("the_matrix_reloaded.colors").config()
-vim.g.the_matrix_reloaded_highlights = {Normal = {fg = colors.orange}}
-```
-
-## 🔌 Plugin support
-
-- https://github.com/mhinz/vim-startify
-- https://github.com/nvim-treesitter/nvim-treesitter
-- https://github.com/kyazdani42/nvim-tree.lua
-- https://github.com/phaazon/hop.nvim
-- https://github.com/lukas-reineke/indent-blankline.nvim
-- https://github.com/hrsh7th/nvim-cmp
-- https://github.com/nvim-telescope/telescope.nvim
-- https://github.com/nvim-lualine/lualine.nvim
-- https://github.com/neoclide/coc.nvim
-- https://github.com/glepnir/lspsaga.nvim
-- https://github.com/folke/trouble.nvim
-- https://github.com/lewis6991/gitsigns.nvim
-- https://github.com/rhysd/git-messenger.vim
-- https://github.com/akinsho/bufferline.nvim
-- https://github.com/nvim-lualine/lualine.nvim
-- https://github.com/TimUntersberger/neogit
-- https://github.com/justinmk/vim-sneak
-- https://github.com/ggandor/lightspeed.nvim
