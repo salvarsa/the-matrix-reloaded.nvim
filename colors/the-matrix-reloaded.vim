@@ -6,5 +6,5 @@ package.loaded['the_matrix_reloaded.theme'] = nil
 package.loaded['the_matrix_reloaded.util'] = nil
 package.loaded['the_matrix_reloaded.lualine'] = nil
 
-require('the_matrix_reloaded').colorscheme()
+require('the_matrix_reloaded').set()
 EOF
