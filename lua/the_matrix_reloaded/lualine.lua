@@ -6,7 +6,7 @@ function M.setup()
   
   require("lualine").setup({
     options = {
-        theme = "matrix_reloaded",
+        theme = require("the_matrix_reloaded.theme").lualine
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
       },

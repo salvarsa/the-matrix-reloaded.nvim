@@ -444,6 +444,14 @@ function M.setup(config)
 
   }
 
+  theme.loadLSP = function()
+    return {
+      DiagnosticError = { fg = colors.error, style = "bold" },
+      DiagnosticWarn = { fg = colors.green1 },
+      LspReferenceText = { bg = colors.highlight }
+    }
+  end
+
   theme.lualine = {
     normal = {
       a = { fg = c.dark, bg = c.green0, gui = "bold" },
