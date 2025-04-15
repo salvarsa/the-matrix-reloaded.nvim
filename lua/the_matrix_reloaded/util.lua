@@ -111,8 +111,16 @@ function util.highlight(group, color)
     end
     if color.style and not (color.style == "NONE") then
       if type(color.style) == "string" then
-        data[color.style] = true
+        -- Split comma-separated styles into individual keys
+        for _, style in ipairs(vim.split(color.style, ",")) do
+          data[style:trim()] = true
+        end
+      elseif type(color.style) == "table" then
+        for _, style in ipairs(color.style) do
+          data[style] = true
+        end
       end
+    end
       if type(color.style) == "table" then
         for _, style in ipairs(color.style) do
           data[style] = true
