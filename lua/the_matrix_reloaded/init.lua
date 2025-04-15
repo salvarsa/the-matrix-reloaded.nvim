@@ -4,6 +4,7 @@ local theme = require("the_matrix_reloaded.theme")
 local M = {}
 
 function M.set()
+  vim.cmd("colorscheme the_matrix_reloaded")
   require("the_matrix_reloaded.util").load(require("the_matrix_reloaded.theme").setup())
   
   -- Cargar integración con Lualine si está instalado

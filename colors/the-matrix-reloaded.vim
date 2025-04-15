@@ -7,5 +7,5 @@ package.loaded['the_matrix_reloaded.util'] = nil
 package.loaded['the_matrix_reloaded.lualine'] = nil
 
 require('the_matrix_reloaded').set()
-vim.cmd("colorscheme the_matrix_reloaded") 
+vim.cmd("colorscheme the_matrix_reloaded")  
 EOF

@@ -26,6 +26,7 @@ config = {
   telescope_theme = opt("telescope_theme", false),
   transparent_mode = opt("transparent_mode", false),
   use_original_palette = opt("use_original_palette", false),
+  lualine_theme = opt("lualine_theme", true),
 }
 
 return config
