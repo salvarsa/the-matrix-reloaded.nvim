@@ -444,6 +444,10 @@ function M.setup(config)
 
   }
 
+  plugins.TelescopePromptBorder = { fg = palette.green0 }
+  plugins.NvimTreeGitDirty = { fg = palette.green1 }
+  plugins.LspDiagnosticsError = { fg = palette.error }
+
   theme.loadLSP = function()
     return {
       DiagnosticError = { fg = colors.error, style = "bold" },

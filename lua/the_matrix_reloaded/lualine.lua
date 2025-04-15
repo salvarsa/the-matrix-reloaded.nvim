@@ -1,12 +1,12 @@
 local M = {}
 
 function M.setup()
-  local colors = require("matrix_reloaded.colors").config()
-  local theme = require("matrix_reloaded.theme").lualine
+  local colors = require("the_matrix_reloaded.colors").config()
+  local theme = require("the_matrix_reloaded.theme").lualine
   
   require("lualine").setup({
     options = {
-        theme = require("the_matrix_reloaded.theme").lualine
+        theme = require("the_matrix_reloaded.theme").lualine,
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
       },

@@ -23,6 +23,8 @@ local palette = {
 }
 
 palette.keyword = palette.gray1
+palette.none = "NONE"
+palette.cursorline = palette.background_dark
 
 -- these are backgrounds
 palette.diff = {
