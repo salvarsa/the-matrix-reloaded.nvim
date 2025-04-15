@@ -5,6 +5,8 @@ local M = {}
 
 function M.set()
   require("the_matrix_reloaded.util").load(require("the_matrix_reloaded.theme").setup())
+  vim.cmd("colorscheme the_matrix_reloaded")
+--end
   
   vim.cmd("colorscheme the_matrix_reloaded")
   
