@@ -37,11 +37,9 @@ M.p = palette
 
 function M.config(config)
   config = config or require("the_matrix_reloaded.config")
-  local colors
+  local colors = palette
   if config.use_original_palette then
-    colors = original_palette
-  else
-    colors = palette
+    colors = vim.deepcopy(palette)
   end
 
   if config.transparent_mode then
